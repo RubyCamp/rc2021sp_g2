@@ -1,12 +1,13 @@
 require 'dxruby'
 
-require_relative './src/player/player'
+require_relative './src/player/operater'
 
-player = Player_base.new
+operater = Operate.new
 
 Window.width = 800
 Window.height = 600
 
 Window.loop do
-  player.draw
+  operater.update
+  operater.draw
 end
