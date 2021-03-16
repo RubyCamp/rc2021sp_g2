@@ -1,12 +1,13 @@
 require 'dxruby'
 
-require_relative './src/player/player'
+require_relative './src/player'
 
-player = Player_base.new
+plyr = Player.new
 
 Window.width = 800
 Window.height = 600
 
 Window.loop do
-  player.draw
+  plyr.jump
+  plyr.draw
 end
