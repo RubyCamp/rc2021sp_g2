@@ -20,7 +20,7 @@ class Enemies
 
   def initialize
     @enemies = []
-    @enemyPlace = [355, 455]
+    @enemyPlace = [330, 430]
   end
 
   def update
