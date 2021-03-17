@@ -30,8 +30,7 @@ class Bullets
         if Input.key_push?(K_SPACE) && @box.size < MAX_BALLET
             @box << Bullet.new($x, $y)
         end
-         p @box.size
-    
+        
     end
 
     def draw
