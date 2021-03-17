@@ -1,4 +1,5 @@
 class Way < Sprite
+
   def initialize(x, y)
     way_image = Image.new(100, 100, C_WHITE)
     @speed = 5
@@ -15,17 +16,16 @@ class Way < Sprite
     end
   end
 
-  #衝突判定が起きたときの処理
+  # 衝突判定が起きたときの処理
   def hit_way(o)
-
   end
+
   def hit_obs(o)
-
   end
-
 end
 
 class Ways
+  
   MAX_WAYS = 8
 
   def initialize

@@ -1,4 +1,5 @@
 class Enemy < Sprite
+
   def initialize(x, y)
     @speed = 5
     image = Image.load("images/enemy.png")
@@ -16,6 +17,7 @@ class Enemy < Sprite
 end
 
 class Enemies
+  
   MAX_ENEMY = 5
 
   def initialize

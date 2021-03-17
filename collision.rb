@@ -5,6 +5,7 @@ class Collision
     @way  = way
     @obs  = obs
   end
+
   def collision(plyr, way)
     if plyr === way
       collosion_way(@plyr, @way)
