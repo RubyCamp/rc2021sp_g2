@@ -1,5 +1,4 @@
 class Collision
-
   def initialize(plyr, way, obs)
     @plyr = plyr
     @way  = way

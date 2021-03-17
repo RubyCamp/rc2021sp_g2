@@ -1,5 +1,4 @@
 class Way < Sprite
-
   def initialize(x, y)
     way_image = Image.new(100, 100, C_WHITE)
     @speed = 5
@@ -25,7 +24,6 @@ class Way < Sprite
 end
 
 class Ways
-  
   MAX_WAYS = 8
 
   def initialize

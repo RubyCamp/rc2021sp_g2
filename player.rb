@@ -1,6 +1,5 @@
 # プレイヤーの呼び出しと機能まとめ
 class Player < Sprite
-
   # 初期化
   def initialize
     # キャラクターの画像と座標
