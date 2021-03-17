@@ -1,5 +1,7 @@
 require 'dxruby'
 
+
+require_relative './src/player/bullet'
 require_relative 'way'
 require_relative 'enemy'
 require_relative './src/player'
@@ -12,6 +14,7 @@ ways = Ways.new
 enemies = Enemies.new
 plyr = Player.new
 wall = Wall.new
+bullets = Bullets.new
 
 Window.loop do 
   ways.update
@@ -20,6 +23,8 @@ Window.loop do
   enemies.draw
   wall.update
   wall.draw
+  bullets.update
+  bullets.draw
   plyr.update
   plyr.jump
   plyr.draw
