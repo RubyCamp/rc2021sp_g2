@@ -13,6 +13,9 @@ class Bullet < Sprite
         end
     end
 
+    def shot
+        self.vanish
+    end
 end
 
 class Bullets
@@ -22,16 +25,15 @@ class Bullets
         @box = []
     end
 
-    def update
-        #Sprite.check()
+    def update(enemies)
+        Sprite.check(@box, enemies)
         Sprite.update(@box)
         Sprite.clean(@box)
 
         if Input.key_push?(K_SPACE) && @box.size < MAX_BALLET
             @box << Bullet.new($x, $y)
         end
-         p @box.size
-    
+        #  p @box.size
     end
 
     def draw
