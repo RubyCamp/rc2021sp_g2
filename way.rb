@@ -30,7 +30,7 @@ class Ways
     Sprite.update(@obstacle)
     Sprite.clean(@obstacle)
 
-    puts "@obst size =  #{@obstacle.size}"
+    # puts "@obst size =  #{@obstacle.size}"
     (MAX_WAYS - @ways.size).times do
       @ways << Way.new(800 + 100 * -@way_x, 500)
 

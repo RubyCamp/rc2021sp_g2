@@ -33,9 +33,9 @@ class Player < Sprite
   end
   
   def update
-    if Input.key_down?(K_LEFT) && self.x > 0
+    if Input.key_down?(K_LEFT) && self.x > 100
       self.x -= 5
-    elsif Input.key_down?(K_RIGHT) && self.x < 800
+    elsif Input.key_down?(K_RIGHT) && self.x + 47 < 800
       self.x += 5
     end
   end
