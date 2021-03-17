@@ -70,6 +70,7 @@ class Ways
   def giv_arr_way
     @ways
   end
+  
   def giv_arr_obs
     @obstacle
   end
