@@ -4,23 +4,19 @@ class Player < Sprite
   #キャラクターの画像と座標
   @@image = Image.load("./src/images/player.png")
   @@image.set_color_key(C_WHITE)
- 
-  
+  @@x = 20
+  @@y = 490
   #初期化
   def initialize
-    @x = 20
-    @y = 490
     @dy = 0#y座標の増加量
     @under = self.y + 81#足元をY座標に
-    @speed = 10
     super
     #キャラクターのSpriteに値を渡す
-    self.x = @x
-    self.y = @y
+    self.x = @@x
+    self.y = @@y
     self.image = @@image
-    end
+  end
 
-  #ジャンプメソッド
   def jump
       @dy = -15 if Input.key_push?(K_UP)
       @under += @dy
@@ -31,13 +27,4 @@ class Player < Sprite
       self.y = @under -81
       @dy += 1 #重力的な
   end
-  
-  def update
-    if Input.key_down?(K_LEFT) && self.x > 0
-      self.x -= 5
-    elsif Input.key_down?(K_RIGHT) && self.x < 800
-      self.x += 5
-    end
-  end
-
 end
