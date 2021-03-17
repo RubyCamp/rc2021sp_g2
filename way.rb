@@ -12,6 +12,11 @@ class Way < Sprite
       # p self.x
     end
   end
+
+  def hit
+    $coll_y = self.y
+  end
+
 end
 
 class Ways
@@ -30,7 +35,7 @@ class Ways
     Sprite.update(@obstacle)
     Sprite.clean(@obstacle)
 
-    puts "@obst size =  #{@obstacle.size}"
+    # puts "@obst size =  #{@obstacle.size}"
     (MAX_WAYS - @ways.size).times do
       @ways << Way.new(800 + 100 * -@way_x, 500)
 
@@ -45,7 +50,7 @@ class Ways
           @count = 1
           @way_x = 0
         end
-      else 
+      else
         @way_x = 0
       end
     end
@@ -54,5 +59,12 @@ class Ways
   def draw
     Sprite.draw(@ways)
     Sprite.draw(@obstacle)
+  end
+
+  def giv_arr_way
+    @ways
+  end
+  def giv_arr_obs
+    @obstacle
   end
 end
