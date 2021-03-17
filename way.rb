@@ -2,6 +2,8 @@ class Way < Sprite
   def initialize(x, y)
     way_image = Image.new(100, 100, C_WHITE)
     @speed = 5
+    @obs_y = 400
+    @obs_no = true
     super(x, y, way_image)
   end
 
@@ -13,8 +15,12 @@ class Way < Sprite
     end
   end
 
-  def hit
-    $coll_y = self.y
+  #衝突判定が起きたときの処理
+  def hit_way(o)
+
+  end
+  def hit_obs(o)
+
   end
 
 end
