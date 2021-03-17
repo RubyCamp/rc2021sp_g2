@@ -3,7 +3,7 @@ class Player < Sprite
   #初期化
   def initialize
     #キャラクターの画像と座標
-    @image = Image.load("./src/images/player.png")
+    @image = Image.load("images/player.png")
     @image.set_color_key(C_WHITE)
     @x = 20
     @y = 490

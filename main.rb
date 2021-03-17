@@ -2,7 +2,6 @@ require 'dxruby'
 
 require_relative 'way'
 require_relative 'enemy'
-require_relative './src/player'
 require_relative 'wall'
 require_relative 'player'
 
