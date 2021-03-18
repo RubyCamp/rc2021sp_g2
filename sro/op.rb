@@ -30,6 +30,7 @@ class Op
 
                 
             when :playing
+                font=Font.new(32)
                 Sprite.check(@plyr, @ways.ways,shot=:shot_way,hit=:hit_way)
                 Sprite.check(@plyr, @ways.obstacle,shot=:shot_obs,hit=:hit_obs)
                 @enemies.update
@@ -46,6 +47,7 @@ class Op
                 @wall.update
                 @wall.draw
                 @system.update
+                # Window.draw_font(600, 20, "SCORE: #{ @bullets.getCount }", @font)
                 if Input.key_push?(K_ESCAPE)
                     @system.scene = :game_over
                 end           

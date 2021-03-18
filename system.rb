@@ -5,14 +5,13 @@ class System
   
   def initialize
     @scene = :title
-    @score = 0
+    $score = 0
     @life = 5
     @font = Font.new(32)
   end
 
   def update
-    @score += 1
-    Window.draw_font(600, 20, "SCORE: #{ @score / 60 }", @font)
+    Window.draw_font(600, 20, "SCORE: #{ $score }", @font)
   end
 
   def getScene

@@ -1,5 +1,8 @@
+require_relative 'system'
+
 class Enemy < Sprite
   def initialize(x, y)
+    @font = Font.new(32)
     @speed = 5
     image = Image.load("images/enemy.png")
     image.set_color_key(C_WHITE)
@@ -15,6 +18,7 @@ class Enemy < Sprite
 
   def hit
     self.vanish
+    $score += 1
   end
 end
 
