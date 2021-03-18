@@ -40,6 +40,7 @@ class Player < Sprite
       @dy = - 16
       @jump_flag = false
     end
+    $y = self.y + 20
   end
 
   def slide
@@ -50,6 +51,7 @@ class Player < Sprite
     elsif Input.key_down?(K_RIGHT) && self.x + @image.width < 800
       self.x += @speed
     end
+    $x = self.x + 15
   end
 
   #衝突判定が来たときにy座標を変更

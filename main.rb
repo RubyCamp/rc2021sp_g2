@@ -1,7 +1,7 @@
 require 'dxruby'
 
 
-require_relative './src/player/bullet'
+require_relative 'bullet'
 require_relative 'way'
 require_relative 'enemy'
 require_relative 'wall'
