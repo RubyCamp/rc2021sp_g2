@@ -45,7 +45,7 @@ class Player < Sprite
 
   def slide
     #横移動
-    @speed_mag = 1.5
+    @speed_mag = 2
     if Input.key_down?(K_LEFT) && self.x > 100
       self.x -= @speed * @speed_mag
     elsif Input.key_down?(K_RIGHT) && self.x + @image.width < 800
@@ -63,7 +63,7 @@ class Player < Sprite
   end
   #2段目
   def shot_obs(d)
-    if @under - @dy < d.y #天板
+    if @under - @dy < d.y#天板
       @under = d.y
       @dy = 0
       @jump_flag = true

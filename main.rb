@@ -1,6 +1,5 @@
 require 'dxruby'
 
-
 require_relative 'bullet'
 require_relative 'way'
 require_relative 'enemy'
@@ -10,6 +9,7 @@ require_relative 'cloud'
 
 Window.width  = 800
 Window.height = 600
+Window.bgcolor=[135,206,235]
 
 plyr = Player.new
 ways = Ways.new
@@ -18,7 +18,12 @@ wall = Wall.new
 bullets = Bullets.new
 clouds = Clouds.new
 
+def bg
+  bg = Image.load("images/bg.png")
+  bg.set_color_key(C_WHITE)
+end
 Window.loop do
+  Window.draw(0,150,bg)
   Sprite.check(plyr, ways.ways,shot=:shot_way,hit=:hit_way)
   Sprite.check(plyr, ways.obstacle,shot=:shot_obs,hit=:hit_obs)
   ways.update
@@ -27,16 +32,10 @@ Window.loop do
   enemies.draw
   wall.update
   wall.draw
-  bullets.update(enemies.getter,ways.getter)
+  bullets.update(enemies.enemies,ways.obstacle)
   bullets.draw
   plyr.update
   plyr.draw
   clouds.update(plyr)
   clouds.draw
-  # plyr.check(cloud.getSprite)
-  # => [] 配列の長さ（要素数）が0
-  # => [sprite1, sprite2].size 配列の長さ（要素数）が2
-  # if plyr.check(cloud.getSprite).size != 0
-  #   cloud.shot
-  # end
 end
