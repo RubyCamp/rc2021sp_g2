@@ -13,10 +13,10 @@ class Cloud < Sprite
             self.vanish
         end
     end
-    
+
     def shot
         puts "hit!"
-    end 
+    end
 end
 
 class Clouds
@@ -31,9 +31,9 @@ class Clouds
         Sprite.update(@clouds)
         Sprite.clean(@clouds)
         (MAX_CLOUD - @clouds.size).times do
-            if rand(1..100) > 80
+          if rand(1..100) > 80
             @clouds << Cloud.new(800)
-            end
+          end
         end
     end
 

@@ -28,6 +28,7 @@ class Enemy < Sprite
 end
 
 class Enemies
+  attr_reader :enemies
   MAX_ENEMY = 5
 
   def initialize

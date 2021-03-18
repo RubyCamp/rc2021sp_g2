@@ -1,6 +1,7 @@
 class Way < Sprite
   def initialize(x, y, width, height)
-    way_image = Image.new(width, height, C_WHITE)
+    way_image = Image.load("./images/way.png")
+    way_image.set_color_key(C_WHITE)
     @speed = 5
     super(x, y, way_image)
   end

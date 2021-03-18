@@ -15,6 +15,8 @@ class Game
     @bullets = Bullets.new
     @clouds = Clouds.new
     @system = System.new
+    @bg = Image.load("images/bg.png")
+    @bg.set_color_key(C_WHITE)
   end
 
   def run
@@ -28,6 +30,7 @@ class Game
           @system.scene = :playing
         end
       when :playing
+        Window.draw(0, 150, @bg)
         Sprite.check(@plyr, @ways.ways, shot=:shot_way, hit=:hit_way)
         Sprite.check(@plyr, @ways.obstacle, shot=:shot_obs, hit=:hit_obs)
         Sprite.check(@plyr, @enemies, hit=:hit_ene)

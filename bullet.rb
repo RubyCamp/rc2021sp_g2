@@ -1,6 +1,7 @@
 class Bullet < Sprite
   def initialize(x, y)
-    bullet = Image.new(100, 20, C_RED)
+    bullet = Image.load("./images/syringe.png")
+    bullet.set_color_key(C_BLACK)
     super(x, y, bullet)
     @speed = 5
   end
@@ -20,6 +21,7 @@ end
 
 class Bullets
   MAX_BALLET = 5
+  attr_reader :box
 
   def initialize
     @box = []

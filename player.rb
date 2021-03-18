@@ -4,14 +4,11 @@ class Player < Sprite
     #キャラクターの画像と座標
     @image = Image.load("./images/player.png")
     @image.set_color_key(C_WHITE)
-    @x  = 100
-    @y  = 490
-    @dy = 0 # y座標の増加量
+    x  = 100
+    y  = 490
+    @dy = 0#y座標の増加量
     @speed = 5
-    # キャラクターのSpriteに値を渡す
-    self.x = @x
-    self.y = @y
-    self.image = @image
+    super(x, y, @image)
 
     @flag = 0
     @jump_flag = false # 二段ジャンプ防止。
@@ -22,11 +19,6 @@ class Player < Sprite
     jump
     slide
     gravity
-    # 画面外に出たときに削除
-    if self.y > 600 && self.x > 800
-      self.vanish
-    end
-
     if self.y > 600 || self.x < 60
       @flag = 1
     end
@@ -53,8 +45,8 @@ class Player < Sprite
   end
 
   def slide
-    # 横移動
-    @speed_mag = 1.5
+    #横移動
+    @speed_mag = 2
     if Input.key_down?(K_LEFT) && self.x > 100
       self.x -= @speed * @speed_mag
     elsif Input.key_down?(K_RIGHT) && self.x + @image.width < 800
@@ -72,7 +64,7 @@ class Player < Sprite
   end
   # 2段目
   def shot_obs(d)
-    if @under - @dy < d.y #天板
+    if @under - @dy < d.y#天板
       @under = d.y
       @dy = 0
       @jump_flag = true
