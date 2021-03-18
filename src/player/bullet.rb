@@ -1,7 +1,7 @@
 class Bullet < Sprite
     def initialize(x,y)
-        image = Image.new(100,20,C_WHITE)
-        super(x,y,image)
+        bullet = Image.new(100,20,C_RED)
+        super(x,y,bullet)
         @speed = 5
     end
 
@@ -25,15 +25,16 @@ class Bullets
         @box = []
     end
 
-    def update(enemies)
-        Sprite.check(@box, enemies)
+    def update(enemies,ways)
+        Sprite.check(@box,enemies)
+        Sprite.check(@box,ways)
+
         Sprite.update(@box)
         Sprite.clean(@box)
 
         if Input.key_push?(K_SPACE) && @box.size < MAX_BALLET
             @box << Bullet.new($x, $y)
         end
-        #  p @box.size
     end
 
     def draw

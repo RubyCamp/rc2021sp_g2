@@ -41,7 +41,7 @@ class Enemies
     Sprite.draw(@enemies)
   end
 
-  def arrayEnemies
+  def getter
     @enemies
   end
 end

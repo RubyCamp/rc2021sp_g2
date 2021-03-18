@@ -30,7 +30,7 @@ class Player < Sprite
       end
       self.y = @under -81
       @dy += 1 #重力的な
-      $y = self.y + 40
+      $y = self.y + 20
   end
   
   def update
@@ -39,7 +39,6 @@ class Player < Sprite
     elsif Input.key_down?(K_RIGHT) && self.x + 47 < 800
       self.x += 5
     end
-    $x = self.x
+    $x = self.x + 15
   end
-
 end
