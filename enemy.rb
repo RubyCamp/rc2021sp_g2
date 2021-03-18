@@ -26,7 +26,6 @@ class Enemy < Sprite
 
   def obs_ene
     self.vanish
-    puts "vanish!"
   end
 end
 
