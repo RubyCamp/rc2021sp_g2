@@ -1,5 +1,8 @@
+require_relative 'system'
+
 class Enemy < Sprite
   def initialize(x, y)
+    @font = Font.new(32)
     @speed = 5
     image = Image.load("images/enemy.png")
     image.set_color_key(C_WHITE)
@@ -15,6 +18,12 @@ class Enemy < Sprite
 
   def hit
     self.vanish
+    $score += 1
+  end
+
+  def shot
+    self.vanish
+    $life -= 1
   end
 end
 
@@ -26,9 +35,10 @@ class Enemies
     @enemyPlace = [330, 430]
   end
 
-  def update
+  def update(plyr)
     Sprite.update(@enemies)
     Sprite.clean(@enemies)
+    Sprite.check(@enemies, plyr)
 
     (MAX_ENEMY - @enemies.size).times do
       if rand(1..100) > 99

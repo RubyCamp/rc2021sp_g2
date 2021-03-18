@@ -9,13 +9,8 @@ class Way < Sprite
     self.x -= @speed
     if self.x + 100 <= 0
       self.vanish
-      # p self.x
     end
   end
-
-  #def hit
-    #self.vanish
-  #end
 end
 
 class Ways
@@ -37,7 +32,6 @@ class Ways
     Sprite.clean(@ways)
     Sprite.update(@obstacle)
     Sprite.clean(@obstacle)
-    # puts "@obst size =  #{@obstacle.size}"
     (MAX_WAYS - @ways.size).times do
       @ways << Way.new(800 + 100 * -@way_x, 500, 100, 100)
 
@@ -66,5 +60,4 @@ class Ways
   def getter
     @obstacle
   end
-
 end
