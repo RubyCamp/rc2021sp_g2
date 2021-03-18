@@ -48,7 +48,7 @@ class Op
                 @wall.draw
                 @system.update
                 # Window.draw_font(600, 20, "SCORE: #{ @bullets.getCount }", @font)
-                if Input.key_push?(K_ESCAPE)
+                if $score == 5
                     @system.scene = :game_over
                 end           
 
