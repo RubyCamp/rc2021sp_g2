@@ -23,7 +23,7 @@ Window.loop do
   enemies.draw
   wall.update
   wall.draw
-  bullets.update
+  bullets.update(enemies.getter)
   bullets.draw
   plyr.update
   plyr.jump

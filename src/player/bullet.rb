@@ -1,7 +1,7 @@
 class Bullet < Sprite
     def initialize(x,y)
-        image = Image.new(100,20,C_WHITE)
-        super(x,y,image)
+        bullet = Image.new(100,20,C_RED)
+        super(x,y,bullet)
         @speed = 5
     end
 
@@ -13,6 +13,10 @@ class Bullet < Sprite
         end
     end
 
+    def shot
+        self.vanish
+    end
+
 end
 
 class Bullets
@@ -22,8 +26,8 @@ class Bullets
         @box = []
     end
 
-    def update
-        #Sprite.check()
+    def update(enemies)
+        Sprite.check(@box,enemies)
         Sprite.update(@box)
         Sprite.clean(@box)
 

@@ -13,6 +13,11 @@ class Enemy < Sprite
       self.vanish
     end
   end
+  
+  def hit
+    self.vanish
+  end
+
 end
 
 class Enemies
@@ -36,5 +41,9 @@ class Enemies
 
   def draw
     Sprite.draw(@enemies)
+  end
+
+  def getter
+    @enemies
   end
 end
