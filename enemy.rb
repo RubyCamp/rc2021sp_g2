@@ -1,5 +1,3 @@
-require_relative 'system'
-
 class Enemy < Sprite
   def initialize(x, y)
     @font = Font.new(32)
@@ -24,6 +22,11 @@ class Enemy < Sprite
   def shot
     self.vanish
     $life -= 1
+  end
+
+  def obs_ene
+    self.vanish
+    puts "vanish!"
   end
 end
 

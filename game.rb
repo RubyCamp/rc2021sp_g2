@@ -30,10 +30,10 @@ class Game
       when :playing
         Sprite.check(@plyr, @ways.ways, shot=:shot_way, hit=:hit_way)
         Sprite.check(@plyr, @ways.obstacle, shot=:shot_obs, hit=:hit_obs)
-        Sprite.check(@plyr, @enemies, hit=:hit_ene)
+        Sprite.check(@plyr, @enemies)
         @enemies.update(@plyr)
         @enemies.draw
-        @ways.update
+        @ways.update(@enemies.getter)
         @ways.draw
         @plyr.update
         @plyr.jump
