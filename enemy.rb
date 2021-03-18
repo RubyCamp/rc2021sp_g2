@@ -20,6 +20,11 @@ class Enemy < Sprite
     self.vanish
     $score += 1
   end
+
+  def shot
+    self.vanish
+    $life -= 1
+  end
 end
 
 class Enemies
@@ -30,9 +35,10 @@ class Enemies
     @enemyPlace = [330, 430]
   end
 
-  def update
+  def update(plyr)
     Sprite.update(@enemies)
     Sprite.clean(@enemies)
+    Sprite.check(@enemies, plyr)
 
     (MAX_ENEMY - @enemies.size).times do
       if rand(1..100) > 99

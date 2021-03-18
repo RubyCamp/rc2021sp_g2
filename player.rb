@@ -13,6 +13,7 @@ class Player < Sprite
     self.y = @y
     self.image = @image
 
+    @flag = 0
     @jump_flag = false # 二段ジャンプ防止。
     @under = self.y + @image.height # 足元をY座標に
   end
@@ -25,6 +26,14 @@ class Player < Sprite
     if self.y > 600 && self.x > 800
       self.vanish
     end
+
+    if self.y > 600
+      @flag = 1
+    end
+  end
+
+  def getFlag
+    @flag
   end
 
   def gravity

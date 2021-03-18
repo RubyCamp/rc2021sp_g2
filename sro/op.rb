@@ -33,7 +33,8 @@ class Op
                 font=Font.new(32)
                 Sprite.check(@plyr, @ways.ways,shot=:shot_way,hit=:hit_way)
                 Sprite.check(@plyr, @ways.obstacle,shot=:shot_obs,hit=:hit_obs)
-                @enemies.update
+                Sprite.check(@plyr, @enemies, hit=:hit_ene)
+                @enemies.update(@plyr)
                 @enemies.draw
                 @ways.update
                 @ways.draw
@@ -47,8 +48,11 @@ class Op
                 @wall.update
                 @wall.draw
                 @system.update
+                p @plyr.getFlag
                 # Window.draw_font(600, 20, "SCORE: #{ @bullets.getCount }", @font)
-                if $score == 5
+                if $score == 10
+                    @system.scene = :clear
+                elsif $life == 0 || @plyr.getFlag == 1
                     @system.scene = :game_over
                 end           
 
@@ -60,7 +64,7 @@ class Op
                 Window.draw_font(500,400,"RETRY:SPACE",font)
                 if Input.key_push?(K_ESCAPE) 
                     @system.scene = :clear
-                    #reset
+                    reset
                 end
             when  :clear
                 image=Image.load("./sro/images/ed1.png")
