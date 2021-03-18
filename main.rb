@@ -1,6 +1,7 @@
 require 'dxruby'
 
 require_relative 'bullet'
+require_relative 'system'
 require_relative './sro/op'
 require_relative 'way'
 require_relative 'enemy'

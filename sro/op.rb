@@ -8,15 +8,15 @@ class Op
         @ways = Ways.new
         @enemies = Enemies.new
         @plyr = Player.new
-        GAME_INFO[:scene]=:title
         @wall = Wall.new
         @bullets = Bullets.new
         @clouds = Clouds.new
+        @system = System.new
     end
 
     def run
         Window.loop do
-            case GAME_INFO[:scene]
+            case @system.getScene
             when :title 
                 image=Image.load("./sro/images/op.png")
                 font=Font.new(32)
@@ -25,7 +25,7 @@ class Op
                 Window.draw_font(500,300,"STARAT:SPACE",font)
                 Window.draw_font(500,100,"TITLE",font)
                 if Input.key_push?(K_ESCAPE)
-                    GAME_INFO[:scene] = :playing
+                    @system.scene = :playing
                 end
 
                 
@@ -45,8 +45,9 @@ class Op
                 @clouds.draw
                 @wall.update
                 @wall.draw
+                @system.update
                 if Input.key_push?(K_ESCAPE)
-                    GAME_INFO[:scene] = :game_over
+                    @system.scene = :game_over
                 end           
 
             when :game_over
@@ -55,8 +56,8 @@ class Op
                 Window.draw(100,100,image)
                 Window.draw_font(500,300,"Game Over",font)
                 Window.draw_font(500,400,"RETRY:SPACE",font)
-                if Input.key_push?(K_ESCAPE)
-                    GAME_INFO[:scene] = :clear
+                if Input.key_push?(K_ESCAPE) 
+                    @system.scene = :clear
                     #reset
                 end
             when  :clear
