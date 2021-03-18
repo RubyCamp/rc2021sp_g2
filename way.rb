@@ -1,6 +1,6 @@
 class Way < Sprite
-  def initialize(x, y)
-    way_image = Image.new(100, 100, C_WHITE)
+  def initialize(x, y, width, height)
+    way_image = Image.new(width, height, C_WHITE)
     @speed = 5
     super(x, y, way_image)
   end
@@ -19,6 +19,7 @@ class Way < Sprite
 end
 
 class Ways
+  attr_reader :ways, :obstacle
   MAX_WAYS = 8
 
   def initialize
@@ -26,6 +27,9 @@ class Ways
     @obstacle = []
     @way_x = 0
     @count = 0
+    @cnt_obs   = 0
+    @cnt_o_obs = 0
+    @cnt_t_obs = 0
   end
 
   def update
@@ -33,14 +37,13 @@ class Ways
     Sprite.clean(@ways)
     Sprite.update(@obstacle)
     Sprite.clean(@obstacle)
-
     # puts "@obst size =  #{@obstacle.size}"
     (MAX_WAYS - @ways.size).times do
-      @ways << Way.new(800 + 100 * -@way_x, 500)
+      @ways << Way.new(800 + 100 * -@way_x, 500, 100, 100)
 
-      if rand(1..100) > 80
-        @obstacle << Way.new(800, 400)
-      end
+        if rand(1..100) > 80
+          @obstacle << Way.new(800, 400, 100, 100)
+        end
 
       if @count == 0
         if @way_x <= MAX_WAYS
@@ -49,7 +52,7 @@ class Ways
           @count = 1
           @way_x = 0
         end
-      else 
+      else
         @way_x = 0
       end
     end
