@@ -27,7 +27,7 @@ class Player < Sprite
       self.vanish
     end
 
-    if self.y > 600
+    if self.y > 600 || self.x < 60
       @flag = 1
     end
   end
