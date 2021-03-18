@@ -26,8 +26,9 @@ class Bullets
         @box = []
     end
 
-    def update(enemies)
+    def update(enemies,ways)
         Sprite.check(@box,enemies)
+        Sprite.check(@box,ways)
         Sprite.update(@box)
         Sprite.clean(@box)
 

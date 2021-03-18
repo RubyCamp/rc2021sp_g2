@@ -12,6 +12,10 @@ class Way < Sprite
       # p self.x
     end
   end
+
+  #def hit
+    #self.vanish
+  #end
 end
 
 class Ways
@@ -55,4 +59,9 @@ class Ways
     Sprite.draw(@ways)
     Sprite.draw(@obstacle)
   end
+
+  def getter
+    @obstacle
+  end
+
 end
