@@ -28,9 +28,9 @@ class Enemies
     Sprite.clean(@enemies)
 
     (MAX_ENEMY - @enemies.size).times do
-      if rand(1..100) > 99
-        @enemies << Enemy.new(800, @enemyPlace[rand(0..1)])
-      end
+    if rand(1..100) > 99
+      @enemies << Enemy.new(800, @enemyPlace[rand(0..1)])
+    end
     end
   end
 
