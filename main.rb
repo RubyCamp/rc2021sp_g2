@@ -2,7 +2,7 @@ require 'dxruby'
 
 require_relative 'bullet'
 require_relative 'system'
-require_relative './sro/op'
+require_relative 'game'
 require_relative 'way'
 require_relative 'enemy'
 require_relative 'wall'
@@ -13,6 +13,6 @@ Window.width  = 800
 Window.height = 600
 
 Window.loop do
-  op=Op.new
-  op.run
+  game = Game.new
+  game.run
 end
