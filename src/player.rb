@@ -9,7 +9,7 @@ class Player < Sprite
   #初期化
   def initialize
     @x = 20
-    @y = 490
+    @y = 100000000000000000000000000000000000
     @dy = 0#y座標の増加量
     @under = self.y + 81#足元をY座標に
     @speed = 10
