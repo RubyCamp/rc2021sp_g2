@@ -11,6 +11,8 @@ require_relative 'cloud'
 
 Window.width  = 800
 Window.height = 600
+Window.bgcolor=[135,206,235]
+
 
 Window.loop do
   game = Game.new
