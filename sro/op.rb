@@ -1,10 +1,4 @@
 class Op
-
-    GAME_INFO = {
-        scene: :title,
-        score: 0,
-    }
-
     def initialize
         reset
     end
@@ -38,13 +32,13 @@ class Op
             when :playing
                 Sprite.check(@plyr, @ways.ways,shot=:shot_way,hit=:hit_way)
                 Sprite.check(@plyr, @ways.obstacle,shot=:shot_obs,hit=:hit_obs)
+                @enemies.update
+                @enemies.draw
                 @ways.update
                 @ways.draw
                 @plyr.update
                 @plyr.jump
                 @plyr.draw
-                @enemies.update
-                @enemies.draw
                 @bullets.update(@enemies.getter,@ways.getter)
                 @bullets.draw
                 @clouds.update(@plyr)
