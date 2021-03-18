@@ -20,7 +20,7 @@ class Game
   def run
     Window.loop do
       case @system.getScene
-      when :title 
+      when :title
         Window.draw(100, 100, @image_opening)
         Window.draw_font(500, 300, "STARAT:SPACE", @font)
         Window.draw_font(500, 100, "TITLE", @font)
@@ -49,21 +49,21 @@ class Game
           @system.scene = :clear
         elsif $life == 0 || @plyr.getFlag == 1
           @system.scene = :game_over
-        end           
+        end
       when :game_over
         Window.draw(100, 100, @image_gameover)
         Window.draw_font(500, 300, "Game Over", @font)
         Window.draw_font(500, 400, "RETRY:SPACE", @font)
-        if Input.key_push?(K_SPACE) 
+        if Input.key_push?(K_ESCAPE)
           @system.scene = :clear
           reset
         end
       when  :clear
         Window.draw(100, 100, @image_clear)
         Window.draw_font(500, 300, "Clear", @font)
-        Window.draw_font(500, 400, "RETRY:SPACE", @font)
-        if Input.key_push?(K_SPACE)
-          reset    
+        Window.draw_font(500, 400, "RETRY:ESCAPE", @font)
+        if Input.key_push?(K_ESCAPE)
+          reset
         end
       end
     end
