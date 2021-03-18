@@ -8,10 +8,13 @@ class Enemy < Sprite
 
   def update
     self.x -= @speed
-
     if self.x + 45 <= 0
       self.vanish
     end
+  end
+
+  def hit
+    self.vanish
   end
 end
 
@@ -36,5 +39,9 @@ class Enemies
 
   def draw
     Sprite.draw(@enemies)
+  end
+
+  def getter
+    @enemies
   end
 end
