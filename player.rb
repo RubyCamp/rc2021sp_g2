@@ -4,14 +4,11 @@ class Player < Sprite
     #キャラクターの画像と座標
     @image = Image.load("./images/player.png")
     @image.set_color_key(C_WHITE)
-    @x  = 100
-    @y  = 490
+    x  = 100
+    y  = 490
     @dy = 0#y座標の増加量
     @speed = 5
-    #キャラクターのSpriteに値を渡す
-    self.x = @x
-    self.y = @y
-    self.image = @image
+    super(x, y, @image)
 
     @jump_flag = false#二段ジャンプ防止。
     @under = self.y + @image.height#足元をY座標に
@@ -23,7 +20,6 @@ class Player < Sprite
     gravity
     #画面外に出たときに削除
     if self.y > 600 && self.x > 800
-      self.vanish
     end
   end
 

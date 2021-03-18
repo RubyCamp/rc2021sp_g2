@@ -1,9 +1,12 @@
 class Enemy < Sprite
+  attr_reader :hit, :image
   def initialize(x, y)
     @speed = 5
-    image = Image.load("images/enemy.png")
-    image.set_color_key(C_WHITE)
-    super(x, y, image)
+    @image = [Image.load("images/enemy.png"),
+             Image.load("images/enemy2.png")]
+    @image[0].set_color_key(C_WHITE)
+    @image[1].set_color_key(C_WHITE)
+    super(x, y)
   end
 
   def update
@@ -12,7 +15,6 @@ class Enemy < Sprite
       self.vanish
     end
   end
-
   def hit
     self.vanish
   end
@@ -22,7 +24,7 @@ class Enemies
   attr_reader :enemies
   MAX_ENEMY = 5
 
-  def initialize
+  def initialize(box)
     @enemies = []
     @enemyPlace = [330, 430]
   end
