@@ -15,8 +15,8 @@ enemies = Enemies.new
 wall = Wall.new
 
 Window.loop do
-  Sprite.check(plyr, ways.giv_arr_way,shot=:shot_way,hit=:hit_way)
-  Sprite.check(plyr, ways.giv_arr_obs,shot=:shot_obs,hit=:hit_obs)
+  Sprite.check(plyr, ways.ways,shot=:shot_way,hit=:hit_way)
+  Sprite.check(plyr, ways.obstacle,shot=:shot_obs,hit=:hit_obs)
   ways.update
   ways.draw
   enemies.update
