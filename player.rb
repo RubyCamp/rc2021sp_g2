@@ -65,7 +65,7 @@ class Player < Sprite
       @under = d.y
       @dy = 0
       @jump_flag = true
-    elsif d.x + 3 > self.x #障害物左辺
+    elsif d.x + 3 > self.x && @under > d.y #障害物左辺
       self.x = d.x - @image.width
     elsif d.x + 100 < self.x + 3 #障害物右辺
       self.x += @speed

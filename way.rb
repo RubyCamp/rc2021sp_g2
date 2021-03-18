@@ -33,28 +33,13 @@ class Ways
     Sprite.clean(@ways)
     Sprite.update(@obstacle)
     Sprite.clean(@obstacle)
-
     # puts "@obst size =  #{@obstacle.size}"
     (MAX_WAYS - @ways.size).times do
       @ways << Way.new(800 + 100 * -@way_x, 500, 100, 100)
 
-      if @cnt_o_obs == 0 && @cnt_t_obs == 1
-        if rand(1..100) > 75
+        if rand(1..100) > 80
           @obstacle << Way.new(800, 400, 100, 100)
         end
-        @cnt_o_obs += 1
-      else
-        if @cnt_t_obs == 0
-          if rand(1..100) > 80
-            @obstacle << Way.new(800, 400, 200, 100)
-          end
-          @cnt_t_obs += 1
-        else
-          @cnt_t_obs = 0
-        end
-        @cnt_o_obs = 0
-      end
-
 
       if @count == 0
         if @way_x <= MAX_WAYS
