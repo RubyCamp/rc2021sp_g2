@@ -5,8 +5,8 @@ class Player < Sprite
     #キャラクターの画像と座標
     @image = Image.load("./src/images/player.png")
     @image.set_color_key(C_WHITE)
-    @x = 20
-    @y = 490
+    @x  = 20
+    @y  = 490
     @dy = 0#y座標の増加量
     @speed = 5
     #キャラクターのSpriteに値を渡す
@@ -14,45 +14,47 @@ class Player < Sprite
     self.y = @y
     self.image = @image
 
-    @jump_flag = false
-    @under = self.y + 81#足元をY座標に
+    @jump_flag = false#二段ジャンプ防止。
+    @under = self.y + @image.height#足元をY座標に
   end
 
+  #ジャンプの制御
   def jump
-    if Input.key_push?(K_UP) and @jump_flag
-      @dy = - 18
+    if Input.key_push?(K_UP) && @jump_flag
+      @dy = - 16
       @jump_flag = false
     end
     @under += @dy
-    self.y = @under -81
+    self.y = @under - @image.height
     @dy += 1 #重力的な
   end
 
   def update
-    @speed = 5
+    @speed_mag = 1.5
     if Input.key_down?(K_LEFT) && self.x > 100
-      self.x -= @speed
-    elsif Input.key_down?(K_RIGHT) && self.x + 47 < 800
+      self.x -= @speed * @speed_mag
+    elsif Input.key_down?(K_RIGHT) && self.x + @image.width < 800
       self.x += @speed
     end
   end
 
   #衝突判定が来たときにy座標を変更
+  #1段目
   def shot_way(d)
-    way_y = d.y
-    @under = way_y
+    @under = d.y
     @dy = 0
     @jump_flag = true
-    @under
   end
+  #2段目
   def shot_obs(d)
-    obs_x = d.x
-    obs_y = d.y
-    obj_id = d.object_id
-    if @under - @dy < obs_y
-      @under = obs_y
+    if @under - @dy < d.y #天板
+      @under = d.y
       @dy = 0
       @jump_flag = true
+    elsif d.x > self.x #障害物左辺
+      self.x = d.x - @image.width
+    elsif d.x + 100 < self.x + 3 #障害物右辺
+      self.x += @speed
     end
 
   end
