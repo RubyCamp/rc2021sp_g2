@@ -4,7 +4,7 @@ class Player < Sprite
     #キャラクターの画像と座標
     @image = Image.load("./images/player.png")
     @image.set_color_key(C_WHITE)
-    @x  = 20
+    @x  = 100
     @y  = 490
     @dy = 0#y座標の増加量
     @speed = 5
