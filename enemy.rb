@@ -1,7 +1,9 @@
 class Enemy < Sprite
   def initialize(x, y)
     @speed = 5
-    image = Image.load("images/enemy.png")
+    image = [Image.load("images/enemy.png"),
+             Image.load("image")
+    image
     image.set_color_key(C_WHITE)
     super(x, y, image)
   end
@@ -14,11 +16,13 @@ class Enemy < Sprite
   end
 
   def hit
+
     self.vanish
   end
 end
 
 class Enemies
+  attr_reader :enemies
   MAX_ENEMY = 5
 
   def initialize
@@ -31,17 +35,13 @@ class Enemies
     Sprite.clean(@enemies)
 
     (MAX_ENEMY - @enemies.size).times do
-      if rand(1..100) > 99
-        @enemies << Enemy.new(800, @enemyPlace[rand(0..1)])
-      end
+    if rand(1..100) > 99
+      @enemies << Enemy.new(800, @enemyPlace[rand(0..1)])
+    end
     end
   end
 
   def draw
     Sprite.draw(@enemies)
-  end
-
-  def getter
-    @enemies
   end
 end
