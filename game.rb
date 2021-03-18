@@ -33,10 +33,10 @@ class Game
         Window.draw(0, 150, @bg)
         Sprite.check(@plyr, @ways.ways, shot=:shot_way, hit=:hit_way)
         Sprite.check(@plyr, @ways.obstacle, shot=:shot_obs, hit=:hit_obs)
-        Sprite.check(@plyr, @enemies, hit=:hit_ene)
+        Sprite.check(@plyr, @enemies)
         @enemies.update(@plyr)
         @enemies.draw
-        @ways.update
+        @ways.update(@enemies.getter)
         @ways.draw
         @plyr.update
         @plyr.jump
@@ -57,15 +57,15 @@ class Game
         Window.draw(100, 100, @image_gameover)
         Window.draw_font(500, 300, "Game Over", @font)
         Window.draw_font(500, 400, "RETRY:SPACE", @font)
-        if Input.key_push?(K_ESCAPE)
+        if Input.key_push?(K_SPACE)
           @system.scene = :clear
           reset
         end
       when  :clear
         Window.draw(100, 100, @image_clear)
         Window.draw_font(500, 300, "Clear", @font)
-        Window.draw_font(500, 400, "RETRY:ESCAPE", @font)
-        if Input.key_push?(K_ESCAPE)
+        Window.draw_font(500, 400, "RETRY:SPACE", @font)
+        if Input.key_push?(K_SPACE)
           reset
         end
       end

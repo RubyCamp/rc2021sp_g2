@@ -28,7 +28,8 @@ class Ways
     @cnt_t_obs = 0
   end
 
-  def update
+  def update(enemies)
+    Sprite.check(@obstacle, enemies, shot=:ene_obs, hit=:obs_ene)
     Sprite.update(@ways)
     Sprite.clean(@ways)
     Sprite.update(@obstacle)
