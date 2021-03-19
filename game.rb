@@ -7,6 +7,9 @@ class Game
     @image_opening = Image.load("images/op.png")
     @image_gameover = Image.load("images/ed2.png")
     @image_clear = Image.load("images/ed1.png")
+    @image_clear.set_color_key(C_WHITE)
+    @bg = Image.load("images/bg.png")
+    @bg.set_color_key(C_WHITE)
     @font = Font.new(32)
     @ways = Ways.new
     @enemies = Enemies.new
@@ -15,8 +18,6 @@ class Game
     @bullets = Bullets.new
     @clouds = Clouds.new
     @system = System.new
-    @bg = Image.load("images/bg.png")
-    @bg.set_color_key(C_WHITE)
   end
 
   def run
@@ -25,7 +26,7 @@ class Game
       when :title
         Window.draw(100, 100, @image_opening)
         Window.draw_font(500, 300, "STARAT:SPACE", @font)
-        Window.draw_font(500, 100, "TITLE", @font)
+        Window.draw_font(500, 100, "SHIMANE HAZARD", @font)
         if Input.key_push?(K_SPACE)
           @system.scene = :playing
         end
