@@ -1,6 +1,7 @@
 class Way < Sprite
   def initialize(x, y, width, height)
-    way_image = Image.new(width, height, C_WHITE)
+    way_image = Image.load("./images/way.png")
+    way_image.set_color_key(C_WHITE)
     @speed = 5
     super(x, y, way_image)
   end
@@ -9,13 +10,8 @@ class Way < Sprite
     self.x -= @speed
     if self.x + 100 <= 0
       self.vanish
-      # p self.x
     end
   end
-
-  #def hit
-    #self.vanish
-  #end
 end
 
 class Ways
@@ -32,12 +28,12 @@ class Ways
     @cnt_t_obs = 0
   end
 
-  def update
+  def update(enemies)
+    Sprite.check(@obstacle, enemies, shot=:ene_obs, hit=:obs_ene)
     Sprite.update(@ways)
     Sprite.clean(@ways)
     Sprite.update(@obstacle)
     Sprite.clean(@obstacle)
-    # puts "@obst size =  #{@obstacle.size}"
     (MAX_WAYS - @ways.size).times do
       @ways << Way.new(800 + 100 * -@way_x, 500, 100, 100)
 
@@ -66,5 +62,4 @@ class Ways
   def getter
     @obstacle
   end
-
 end
